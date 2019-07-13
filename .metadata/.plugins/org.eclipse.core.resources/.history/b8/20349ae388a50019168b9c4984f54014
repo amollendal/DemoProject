@@ -1,0 +1,91 @@
+package prasad_JDBC;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+import java.util.TreeMap;
+import java.util.Vector;
+
+public class DemoJdbc {
+
+	public static void main(String[] args)throws SQLException,ClassNotFoundException {
+		/*
+		 * Class.forName("com.mysql.jdbc.Driver"); Connection con =
+		 * DriverManager.getConnection("jdbc:mysql://localhost:3306/prasad","root","");
+		 * PreparedStatement st =
+		 * con.prepareStatement("insert into emp  values(?,?,?,?)"); st.setInt(1,1);
+		 * st.setString(2,"xxx"); st.setInt(3,234134534); st.setString(4,"sf");
+		 * st.execute();
+		 */
+		
+		/*
+		 * int n, sum = 0, op; Scanner s = new Scanner(System.in);
+		 * System.out.print("Enter no. of elements you want in array:"); n =
+		 * s.nextInt(); int a[] = new int[n];
+		 * System.out.println("Enter all the elements:"); for(int i = 0; i < n; i++) {
+		 * a[i] = s.nextInt(); //sum = sum + a[i]; }
+		 * 
+		 * System.out.println("Sum:"+sum);
+		 * 
+		 * System.out.println("Enter your required sum.");
+		 * 
+		 * op=s.nextInt(); System.out.println(op);
+		 * 
+		 * sum = a[0]; int[] numberCounter = new int[a.length];
+		 * System.out.println("a :"+a.length);
+		 * System.out.println("nc : "+numberCounter.length); for(int i = 0; i <
+		 * a.length; i++) { if (op >= a[i]) { numberCounter[i] = op / a[i]; op = op -
+		 * numberCounter[i] * a[i]; }
+		 * 
+		 * }
+		 * 
+		 * System.out.println("Number Count ->"); for (int i = 0; i <
+		 * numberCounter.length; i++) { if (numberCounter[i] != 0) {
+		 * System.out.println(a[i] + " : " + numberCounter[i]); } }
+		 */
+		
+		 public static TreeMap<Integer,Object> map=new TreeMap<Integer,Object>();    
+
+		// The vector v stores current subset. 
+		static void printAllSubsetsRec(int arr[], int n, Vector<Integer> v, int sum) 
+		{ 
+			// If remaining sum is 0, then print all 
+			// elements of current subset. 
+			if (sum == 0) { 
+			    map.put(v.size(), v);
+				for (int i=0;i<v.size();i++) 
+					System.out.print( v.get(i) + " "); 
+				System.out.println(); 
+				return; 
+			} 
+
+			// If no remaining elements, 
+			if (n == 0) 
+				return; 
+
+			// We consider two cases for every element. 
+			// a) We do not include last element. 
+			// b) We include last element in current subset. 
+			printAllSubsetsRec(arr, n - 1, v, sum); 
+			Vector<Integer> v1=new Vector<Integer>(v); 
+			v1.add(arr[n - 1]); 
+			printAllSubsetsRec(arr, n - 1, v1, sum - arr[n - 1]); 
+		} 
+
+		// Wrapper over printAllSubsetsRec() 
+		static void printAllSubsets(int arr[], int n, int sum) 
+		{ 
+			Vector<Integer> v= new Vector<Integer>(); 
+			printAllSubsetsRec(arr, n, v, sum); 
+		} 
+		
+		int arr[] = {10,0,-1,20,25,30};; 
+		int sum = 45; 
+		int n = arr.length; 
+		printAllSubsets(arr, n, sum); 
+		System.out.println((Vector<Integer>)map.get(map.firstKey()));
+        
+	}
+}

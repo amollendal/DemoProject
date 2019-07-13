@@ -1,0 +1,19 @@
+package prasad_JDBC;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class DemoJdbc {
+
+	public static void main(String[] args)throws SQLException,ClassNotFoundException {
+		// TODO Auto-generated method stub
+Class.forName("com.mysql.jdbc.Driver");
+Connection con = DriverManager.getConnection("jdbc:mysql:localhost:3306/prasad","root","");
+PreparedStatement st = con.prepareStatement("insert into emp  values(?,?,?)");
+st.setString(1,"xxx");
+st.setInt(2, 234134534);
+st.setString(3,"sf");
+}
+}

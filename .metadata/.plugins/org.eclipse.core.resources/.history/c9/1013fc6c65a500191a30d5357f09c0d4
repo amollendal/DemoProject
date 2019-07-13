@@ -1,0 +1,64 @@
+package prasad_JDBC;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class DemoJdbc {
+
+	public static void main(String[] args)throws SQLException,ClassNotFoundException {
+		/*
+		 * Class.forName("com.mysql.jdbc.Driver"); Connection con =
+		 * DriverManager.getConnection("jdbc:mysql://localhost:3306/prasad","root","");
+		 * PreparedStatement st =
+		 * con.prepareStatement("insert into emp  values(?,?,?,?)"); st.setInt(1,1);
+		 * st.setString(2,"xxx"); st.setInt(3,234134534); st.setString(4,"sf");
+		 * st.execute();
+		 */
+		
+		int n, sum = 0, op;
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter no. of elements you want in array:");
+        n = s.nextInt();
+        int a[] = new int[n];
+        System.out.println("Enter all the elements:");
+        for(int i = 0; i < n; i++)
+        {
+            a[i] = s.nextInt();
+            //sum = sum + a[i];
+        }
+        
+        System.out.println("Sum:"+sum);
+    
+		System.out.println("Enter your required sum.");
+		
+		op=s.nextInt();
+		System.out.println(op);
+		
+		sum = a[0];
+		int[] numberCounter = new int[a.length];
+		System.out.println("a :"+a.length);
+		System.out.println("nc : "+numberCounter.length);
+		for(int i = 0; i < a.length; i++)
+        {
+			if (op >= a[i]) { 
+				numberCounter[i] = op / a[i]; 
+                op = op - numberCounter[i] * a[i]; 
+            }
+			
+        }
+		
+		System.out.println("Number Count ->"); 
+        for (int i = 0; i < 9; i++) { 
+            if (numberCounter[i] != 0) { 
+                System.out.println(a[i] + " : "
+                    + numberCounter[i]); 
+            } 
+        }
+		
+		
+        
+	}
+}

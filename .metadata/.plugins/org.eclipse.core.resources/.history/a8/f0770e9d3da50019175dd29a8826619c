@@ -1,0 +1,10 @@
+package prasad_JDBC;
+
+public class DemoJdbc {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
